@@ -1,0 +1,582 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+  :root {
+    /*
+    *
+    * This all are the rgb values which are used inside the
+    * tailwind config file and custom plugins css file
+    *
+    */
+
+    /*
+    * primary color
+    */
+    --color-accent: 224 ,29 ,86;
+
+    /*
+    * Hover state color of primary color
+    */
+    --color-accent-hover: 223 ,176, 84;
+
+    /*
+    * shade of primary color
+    */
+    --color-accent-300: 153, 217, 204;
+
+    /*
+    * shade of primary color
+    */
+    --color-accent-400: 77, 188, 165;
+
+    /*
+    * shade of primary color
+    */
+    --color-accent-500: 0, 159, 127;
+
+    /*
+    * shade of primary color
+    */
+    --color-accent-600: 0, 143, 114;
+
+    /*
+    * shade of primary color
+    */
+    --color-accent-700: 0, 119, 95;
+
+    /*
+    * light color
+    */
+    --color-light: 255, 255, 255;
+
+    /*
+    * dark color
+    */
+    --color-dark: 0, 0, 0;
+
+    /*
+    * Black muted color
+    */
+    --color-muted-black: 17, 17, 17;
+
+    /*
+    *
+    * TEXT colors
+    *
+    */
+
+    /*
+    * text color used for body/base text -> gray-500
+    */
+    --text-base: 107, 114, 128;
+
+    /*
+    * dark base text color  -> gray-600
+    */
+    --text-base-dark: 75, 85, 99;
+
+    /*
+    * muted text color -> gray-400
+    */
+    --text-muted: 156, 163, 175;
+
+    /*
+    * light muted text color - gray-300
+    */
+    --text-muted-light: 209, 213, 219;
+
+    /*
+    * text color used for heading text -> gray-700
+    */
+    --text-sub-heading: 55, 65, 81;
+
+    /*
+    * text color used for heading text -> gray-800
+    */
+    --text-heading: 31, 41, 55;
+
+    /*
+    * text color used for heading text -> gray-900
+    */
+    --text-bolder: 31, 41, 55;
+
+    /*
+    *
+    * border colors
+    *
+    */
+
+    /*
+    * border color 50
+    */
+    --color-border-50: 223 ,176 ,84;
+
+    /*
+    * border color 100
+    */
+    --color-border-100: 243, 244, 246;
+
+    /*
+    * border color 200
+    */
+    --color-border-200: 229, 231, 235;
+
+    /*
+    * border base color which is 300
+    */
+    --color-border-base: 209, 213, 219;
+
+    /*
+    * border color 400
+    */
+    --color-border-400: 156, 163, 175;
+
+    /*
+    *
+    * Tailwind default gray color override
+    *
+    */
+
+    /*
+    * gray-50
+    */
+    --color-gray-50: 249, 250, 251;
+
+    /*
+    * gray-100
+    */
+    --color-gray-100: 243, 244, 246;
+
+    /*
+    * gray-200
+    */
+    --color-gray-200: 229, 231, 235;
+
+    /*
+    * gray-300
+    */
+    --color-gray-300: 209, 213, 219;
+
+    /*
+    * gray-400
+    */
+    --color-gray-400: 156, 163, 175;
+
+    /*
+    * gray-500
+    */
+    --color-gray-500: 107, 114, 128;
+
+    /*
+    * gray-600
+    */
+    --color-gray-600: 75, 85, 99;
+
+    /*
+    * gray-700
+    */
+    --color-gray-700: 55, 65, 81;
+
+    /*
+    * gray-800
+    */
+    --color-gray-800: 31, 41, 55;
+
+    /*
+    * gray-900
+    */
+    --color-gray-900: 31, 41, 55;
+  }
+
+  html {
+    -webkit-tap-highlight-color: transparent;
+	  scroll-behavior: smooth;
+  }
+  
+  input::-moz-focus-inner {
+    border: 0;
+  }
+
+  body {
+    @apply font-body;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+  }
+
+  a {
+    @apply no-underline;
+  }
+}
+
+/* For Chrome, Safari, and Edge */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* For Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+
+.hidingHeader {
+	position: relative;
+	--hidingHeader-height: auto;
+	--hidingHeader-bounds-height: auto;
+	--hidingHeader-animation-offset: 0px;
+	z-index: 40;
+	height: var(--hidingHeader-bounds-height);
+	margin-bottom: calc(
+		var(--hidingHeader-height) - var(--hidingHeader-bounds-height)
+	);
+	pointer-events: none;
+}
+
+.hidingHeader-in {
+	position: relative;
+	position: sticky;
+	top: 0;
+	pointer-events: auto;
+	transition: transform 0.8s;
+	transform: translateY(var(--hidingHeader-animation-offset));
+}
+
+@media (prefers-reduced-motion) {
+	.hidingHeader-in {
+		transition-duration: 0ms;
+		transition-timing-function: step-end;
+	}
+}
+
+
+
+
+
+/* Change autocomplete styles in WebKit */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+/* border: 1px solid green;
+-webkit-text-fill-color: green; */
+/* -webkit-box-shadow: 0 0 0px 1000px #000 inset; */
+transition: background-color 5000s ease-in-out 0s;
+}
+
+/* PRESENTATIONAL STYLES */
+/* body {
+background: #333;
+color: #fff;
+display: flex;
+font-family: "Lato";
+font-size: 2em;
+justify-content: center;
+} */
+
+form {
+padding: 50px 0;
+width: 100%;
+}
+
+@import "./custom-plugins.css";
+
+.k-pdf-export h2 {
+  font-size: 0.8em;
+  font-weight: 500;
+  margin-bottom: 0.2em;
+}
+
+.k-pdf-export h3 {
+  font-size: 0.8em;
+  font-weight: 250;
+  margin-bottom: 0.2em;
+}
+
+.k-pdf-export p {
+  font-size: 0.8em;
+  font-weight: 300;
+  margin-bottom: 0.2em;
+}
+
+.k-pdf-export span {
+  font-size: 0.8em;
+  font-weight: 190;
+  margin-bottom: 0.2em;
+}
+
+.k-pdf-export strong {
+  font-size: 0.8em;
+  font-weight: 190;
+  margin-bottom: 0.2em;
+}
+
+.k-pdf-export i,u {
+  font-size: 0.8em;
+  font-weight: 190;
+  margin-bottom: 0.2em;
+}
+ 
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.hdpi.pac-logo:after{
+  background-image:none!important; 
+   background: #000; 
+}
+
+.pac-logo:after{
+  background-image:url('/search.png');
+  background-color: #000;
+  display: none;
+}
+
+.css-tlfecz-indicatorContainer{
+  display:none!important;
+  background: #000;
+}
+
+.css-1hb7zxy-IndicatorsContainer{
+  display:none!important;
+  background-color: #000;
+}
+
+.css-1pahdxg-control{
+  border-color: white!important;
+  border-radius: 1px!important;
+  border-style: solid!important;  
+  /* border-width: 2px!important; */
+  /* box-shadow: 1 2 2 1px #449E7D!important; */
+  height: 46.8px!important;
+  border-radius: 0px!important;
+  border-left: none;
+  background-color: #000;
+}
+
+
+.css-yk16xz-control{
+  height: 55px!important;
+  border-top-left-radius: 8px!important;
+  border-bottom-left-radius: 8px!important;
+  /* background-color: #43A093; */
+  border-top-right-radius: 8px!important;
+  border-bottom-right-radius: 8px!important;
+  border-width: 2px!important;
+  /* border-style:dotted ; */
+  background-color: rgb(38, 33, 33);
+  border-color: #1d2423a2!important;
+}
+
+.css-yk16xz-control::placeholder {
+  /* color: rgb(236, 15, 15)!important; */
+  font-size: 0.2em!important;
+  font-weight: bold!important;
+}
+
+  .css-26l3qy-menu{
+    position: sticky;
+    z-index: 50;
+    /* background-color: #000; */
+    
+  }
+
+
+
+ 
+
+  
+
+@media (min-width: 244px) {
+
+  .css-yk16xz-control{
+    height: 40px!important;
+  }
+ }
+
+ @media (min-width: 1024px) {
+
+  .css-yk16xz-control{
+
+    height: 48px!important;
+
+  }
+ }
+
+ .tip {
+  position: relative;
+  display: inline-block;
+}
+
+.tip .tiptext {
+  visibility: hidden;
+  width: 70px;
+  background-color: #43A093;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  /* Position the tip */
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 150%;
+  margin-left: -60px;
+}
+
+.tip:hover .tiptext {
+  visibility: visible;
+}
+
+.icon-clipboard{
+  width:25px;
+  height: auto;
+  color:#43A093;
+  cursor: pointer;
+
+}
+.invite-link{
+  color:#43A093;
+  text-decoration: none;
+  margin-left: 12px;
+}
+
+div.custom-container {
+	background-color: #242424;
+}
+
+svg.custom{
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* TREE */
+svg.custom .node circle {
+  fill: #F3F3FF;
+	stroke: #2593B8;
+	stroke-width: 1.5px;
+}
+
+svg.custom .node text {
+	font-size: 16px;
+	background-color: #444;
+	fill: #F4F4F4;
+  text-shadow: 0 1px 4px black;
+	font-weight: 600;
+}
+
+svg.custom .node {
+	cursor: pointer;
+}
+
+svg.custom path.link {
+	
+  fill: none;
+	stroke: #2593B8;
+	stroke-width: 1.5px;
+}
+/* END TREE */
+
+
+.rc-pagination .rc-pagination-item.rc-pagination-item-active {
+  --tw-border-opacity: 1;
+  border-color: rgba(var(--color-accent), var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgba(var(--color-accent), var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: white;
+  border-radius: 5px;
+}
+
+.rc-pagination .rc-pagination-item.rc-pagination-item-active a{
+  color: white;
+}
+
+  @media (min-width: 1024px) {
+    .css-yk16xz-control{
+      border-top-left-radius: 0px!important;
+      border-bottom-left-radius: 0px!important;
+    }
+   }
+
+   @media screen and (max-width: 767px){   
+    #image-slider{      
+        content:url("/banner7.jpeg");
+        object-fit: cover;
+     } 
+    }
+
+    @media screen and (max-width: 480px){   
+      #grocery{      
+          content:url("/banner/mobile-grocery.jpg");
+          object-fit: fill;
+       } 
+      }
+
+    @media screen and (max-width: 1030px){   
+      #location-input{      
+         margin-top: 17%;
+       } 
+    }
+
+      @media screen and (max-width: 912px){   
+        #location-input{      
+           margin-top: 20%;
+        } 
+      }
+
+  /* @media screen and (max-width: 240px){   
+     #salon-banner{      
+      src: 'ad-banner.jpg';
+      } 
+    } */
+
+  @media screen and (max-width: 1023px){   
+    #salon-banner {      
+      src: '/banner/salon-ad.jpg';
+      } 
+    }
+
+    @media screen and (max-width: 1620px){   
+      #location-input{      
+          margin-top: 16%;
+       } 
+      }
+
+      @media screen and (max-width: 1720px){   
+        #location-input{      
+            margin-top: 16%;
+        } 
+      }
+
+      @media screen and (max-width: 1030px){   
+        #cities{      
+           margin-top: 4%;
+        } 
+        }
+
+
+
+        
